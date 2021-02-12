@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import { PubSubScheme, RepositoryScheme, UserScheme } from '../scheme';
 import { pubSubAdapter, repositoryAdapter, userAdapter } from './adapters';
 
