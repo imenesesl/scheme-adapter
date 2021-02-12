@@ -9,8 +9,8 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "lint": "eslint . --ext .js,.ts --quiet",
-    "lint-fix": "eslint . --ext .js,.ts --fix",
+    "lint": "eslint . --ext .ts --quiet",
+    "lint-fix": "eslint . --ext .ts --fix",
     "prettier-write": "prettier --write *",
     "start": "microbundle watch",
     "build": "microbundle",
@@ -50,7 +50,7 @@
 		}
 	},
 	"lint-staged": {
-		"./src/**/*.{js,ts,json,yml}": [
+		"./src/**/*.{ts,json,yml}": [
       "npm run prettier-write",
       "npm run lint-fix",
       "git add"
