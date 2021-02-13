@@ -1,3 +1,4 @@
+import { Operators } from '../transform/types';
 export type Scheme<M> = {
   [P in keyof Required<M>]: M[P];
 };
@@ -5,7 +6,7 @@ export type Scheme<M> = {
 interface TransformPayload<M, P extends keyof M> {
   value: M[P];
   transforms: Array<string>;
-  join?: string;
+  join?: Operators;
 }
 
 export type SchemeTransform<M> = {
