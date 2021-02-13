@@ -1,5 +1,6 @@
-import { MathOperationsScheme } from '../scheme';
-import { mathOperationsTransform } from './transforms';
+import { ownerAdapter, repositoryAdapter, userAdapter } from '../adapter/adapters';
+import { ArrayOperationsScheme, MapOperationsScheme, MathOperationsScheme } from '../scheme';
+import { arrayOperationsTransform, mapOperationsTransform, mathOperationsTransform } from './transforms';
 
 describe('JOIN MATH', () => {
   const data2021Model = {
@@ -42,5 +43,53 @@ describe('JOIN MATH', () => {
 
   test('general', () => {
     expect(JSON.stringify(Object.keys(mathOperations))).toBe(JSON.stringify(Object.keys(MathOperationsScheme)));
+  });
+});
+
+describe('JOIN MAP', () => {
+  const tableModel = {
+    location: {
+      country: 'Colombia',
+      code: '+57',
+    },
+    contact: {
+      phone: '0000000000',
+      email: 'luismenesesep@gmail.com',
+    },
+    status: {
+      isActive: true,
+    },
+    user: {
+      name: 'Luis',
+      lastName: 'Meneses',
+    },
+    provider: {
+      email: 'org@gmail.com',
+      isActive: true,
+      name: 'ORG',
+    },
+  };
+
+  const mapOperations = mapOperationsTransform(tableModel);
+
+  test('join-object', () => {
+    expect(JSON.stringify(Object.keys(mapOperations))).toBe(JSON.stringify(Object.keys(MapOperationsScheme)));
+    expect(JSON.stringify(Object.keys(mapOperations.contact))).toBe(JSON.stringify(Object.keys(MapOperationsScheme.contact)));
+    expect(JSON.stringify(Object.keys(mapOperations.user))).toBe(JSON.stringify(Object.keys(MapOperationsScheme.user)));
+  });
+});
+
+describe('JOIN ARRAY', () => {
+  const accountsModel = {
+    premium: Array.from(Array(10).keys()).map(user => userAdapter(user)),
+    free: Array.from(Array(10).keys()).map(user => ownerAdapter(user)),
+    freemium: Array.from(Array(10).keys()).map(user => repositoryAdapter(user)),
+  };
+
+  const arrayOperations = arrayOperationsTransform(accountsModel);
+
+  test('join-array', () => {
+    expect(JSON.stringify(Object.keys(arrayOperations))).toBe(JSON.stringify(Object.keys(ArrayOperationsScheme)));
+    expect(arrayOperations.users.length).toBe(accountsModel.premium.length + accountsModel.free.length + accountsModel.freemium.length);
   });
 });

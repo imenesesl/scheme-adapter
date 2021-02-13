@@ -1,6 +1,6 @@
 import { adapter } from '../..';
-import { OwnerScheme, PubSubScheme, RepositoryScheme } from '../scheme';
-import { Owner, PubSub, Repository } from '../types';
+import { OwnerScheme, PubSubScheme, RepositoryScheme, UserScheme } from '../scheme';
+import { Owner, PubSub, Repository, User } from '../types';
 
 export const pubSubAdapter = (pubSub: any): PubSub => {
   const result = adapter<PubSub>(pubSub, PubSubScheme);
@@ -29,3 +29,5 @@ export const ownerAdapter = (owner: any): Owner => {
   };
   return data;
 };
+
+export const userAdapter = (user: any): User => adapter<User>(user, UserScheme);

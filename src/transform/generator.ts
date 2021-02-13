@@ -1,4 +1,4 @@
-import { isArray, isMap } from '../core/validators';
+import { isArray, isMap } from '../core';
 
 export const generateDefault = (property: any): any => {
   switch (typeof property) {

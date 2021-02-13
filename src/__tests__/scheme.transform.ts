@@ -1,5 +1,5 @@
 import { SchemeTransform } from '../';
-import { MathOperations, User } from './types';
+import { ArrayOperations, MapOperations, MathOperations, User } from './types';
 
 export const UserSchemaTransfrom: SchemeTransform<User> = {
   email: {
@@ -38,5 +38,42 @@ export const MathOperationsSchemeTranform: SchemeTransform<MathOperations> = {
     transforms: ['DaysPerYear', 'HoursPerDay'],
     join: 'multiply',
     value: 0,
+  },
+};
+
+export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
+  contact: {
+    transforms: ['location', 'contact'],
+    join: 'join-object',
+    value: {
+      country: '',
+      phone: '',
+    },
+  },
+  user: {
+    transforms: ['status', 'user', 'contact'],
+    join: 'join-object',
+    value: {
+      email: '',
+      isActive: false,
+      name: '',
+    },
+  },
+  owner: {
+    transforms: ['provider'],
+    join: 'join-object',
+    value: {
+      email: '',
+      isActive: false,
+      name: '',
+    },
+  },
+};
+
+export const ArrayOperationsSchemeTranform: SchemeTransform<ArrayOperations> = {
+  users: {
+    transforms: ['premium', 'free', 'freemium'],
+    join: 'join-array',
+    value: [],
   },
 };

@@ -1,3 +1,3 @@
 export { typedKeys } from './iterator';
 export { Scheme, SchemeTransform } from './scheme';
-export { isValid } from './validators';
+export { isArray, isMap, isValid } from './validators';

@@ -1,5 +1,5 @@
 import { Scheme } from '..';
-import { MathOperations, Owner, PubSub, Repository, User } from './types';
+import { ArrayOperations, MapOperations, MathOperations, Owner, PubSub, Repository, User } from './types';
 
 export const RepositoryScheme: Scheme<Repository> = {
   isActive: false,
@@ -49,4 +49,25 @@ export const MathOperationsScheme: Scheme<MathOperations> = {
   rest: 0,
   sum: 0,
   multiply: 0,
+};
+
+export const MapOperationsScheme: Scheme<MapOperations> = {
+  contact: {
+    country: '',
+    phone: '',
+  },
+  user: {
+    email: '',
+    isActive: false,
+    name: '',
+  },
+  owner: {
+    email: '',
+    isActive: false,
+    name: '',
+  },
+};
+
+export const ArrayOperationsScheme: Scheme<ArrayOperations> = {
+  users: [],
 };
