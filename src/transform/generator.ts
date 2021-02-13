@@ -13,6 +13,6 @@ export const generateDefault = (property: any): any => {
     case 'string':
       return '';
     default:
-      return null;
+      return property;
   }
 };

@@ -47,10 +47,12 @@ userAdapter({ name: 'Luis Meneses' });
 - ## SchemeTransform - transformAdapter
 
 ```ts
+export declare type Operators = '' | ' ' | 'and' | 'or' | 'join-array' | 'join-object' | 'sum' | 'rest' | 'divide' | 'multiply';
+
 interface TransformPayload<M, P extends keyof M> {
   value: M[P];
   transforms: Array<string>;
-  join?: string;
+  join?: Operators;
 }
 
 export declare type SchemeTransform<M> = {
@@ -66,11 +68,11 @@ Each property provide three options by TransformPayload where:
 
 - `value`: Default value
 - `transforms`: List of properties to join
-- `join`: Operator to join properties defaults to an empty string
+- `join`: Operator to join properties
 
 ⚠️ Warning
 
-In this version the `join` property only works to join strings, if you need operations between numbers, booleans and other types, it is suggested that you perform these operations separately.
+In this version the `join` property only works to operations with booleans, numbers, arrays, maps and strings, if you need more operations, it is suggested that you perform these operations separately.
 
 _The schema requires you to define all the properties_
 
