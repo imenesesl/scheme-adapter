@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { isArray, isMap } from '../core';
-import { JOIN_ARRAY, JOIN_OBJECT, Operators } from './types';
+import { JOIN_ARRAY, JOIN_MAP, Operators } from './types';
 
 interface Params {
   hasJoin?: Operators;
@@ -21,8 +21,8 @@ const arrayOperator = ({ hasJoin, value, accumulator }: Params): Array<any> => {
 const mapOperator = ({ hasJoin, value, accumulator, model }: Params): object => {
   let acc = accumulator;
   if (hasJoin) {
-    if (![JOIN_OBJECT].includes(hasJoin)) throw new Error(`Invalid join to type map, use: <${JOIN_OBJECT}>`);
-    if (hasJoin === JOIN_OBJECT) {
+    if (![JOIN_MAP].includes(hasJoin)) throw new Error(`Invalid join to type map, use: <${JOIN_MAP}>`);
+    if (hasJoin === JOIN_MAP) {
       acc = { ...acc, ...value };
       const data = Object.keys(model).reduce((accc, key) => ({ ...accc, [key]: acc[key] ?? model[key] }), {});
       acc = data;

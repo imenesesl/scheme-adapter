@@ -94,7 +94,7 @@ describe('JOIN MAP', () => {
 
   const mapOperations = mapOperationsTransform(tableModel);
 
-  test('join-object', () => {
+  test('join-map', () => {
     expect(JSON.stringify(Object.keys(mapOperations))).toBe(JSON.stringify(Object.keys(MapOperationsScheme)));
     expect(JSON.stringify(Object.keys(mapOperations.contact))).toBe(JSON.stringify(Object.keys(MapOperationsScheme.contact)));
     expect(JSON.stringify(Object.keys(mapOperations.user))).toBe(JSON.stringify(Object.keys(MapOperationsScheme.user)));

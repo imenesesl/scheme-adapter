@@ -49,7 +49,7 @@ userAdapter({ name: 'Luis Meneses' });
 - ## SchemeTransform - transformAdapter
 
 ```ts
-export declare type Operators = '' | ' ' | 'and' | 'or' | 'join-array' | 'join-object' | 'sum' | 'rest' | 'divide' | 'multiply';
+export declare type Operators = '' | ' ' | 'and' | 'or' | 'join-array' | 'join-map' | 'sum' | 'rest' | 'divide' | 'multiply';
 
 interface TransformPayload<M, P extends keyof M> {
   value: M[P];
@@ -245,7 +245,7 @@ export interface MapOperations {
 export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   contact: {
     transforms: ['location', 'contact'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       country: '',
       phone: '',
@@ -253,7 +253,7 @@ export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   },
   user: {
     transforms: ['status', 'user', 'contact'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       email: '',
       isActive: false,
@@ -262,7 +262,7 @@ export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   },
   owner: {
     transforms: ['provider'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       email: '',
       isActive: false,

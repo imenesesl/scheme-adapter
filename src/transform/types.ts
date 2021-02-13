@@ -5,7 +5,7 @@ export const AND_BOOLEAN = 'and';
 export const OR_BOOLEAN = 'or';
 
 export const JOIN_ARRAY = 'join-array';
-export const JOIN_OBJECT = 'join-object';
+export const JOIN_MAP = 'join-map';
 
 export const SUM = 'sum';
 export const REST = 'rest';
@@ -18,7 +18,7 @@ export type Operators =
   | typeof AND_BOOLEAN
   | typeof OR_BOOLEAN
   | typeof JOIN_ARRAY
-  | typeof JOIN_OBJECT
+  | typeof JOIN_MAP
   | typeof SUM
   | typeof REST
   | typeof DIVIDE

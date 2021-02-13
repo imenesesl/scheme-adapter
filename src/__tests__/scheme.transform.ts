@@ -44,7 +44,7 @@ export const MathOperationsSchemeTranform: SchemeTransform<MathOperations> = {
 export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   contact: {
     transforms: ['location', 'contact'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       country: '',
       phone: '',
@@ -52,7 +52,7 @@ export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   },
   user: {
     transforms: ['status', 'user', 'contact'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       email: '',
       isActive: false,
@@ -61,7 +61,7 @@ export const MapOperationsSchemeTranform: SchemeTransform<MapOperations> = {
   },
   owner: {
     transforms: ['provider'],
-    join: 'join-object',
+    join: 'join-map',
     value: {
       email: '',
       isActive: false,
