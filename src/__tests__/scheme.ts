@@ -1,5 +1,5 @@
 import { Scheme } from '..';
-import { ArrayOperations, MapOperations, MathOperations, Owner, PubSub, Repository, User } from './types';
+import { ArrayOperations, BooleanOperations, MapOperations, MathOperations, Owner, PubSub, Repository, User } from './types';
 
 export const RepositoryScheme: Scheme<Repository> = {
   isActive: false,
@@ -70,4 +70,9 @@ export const MapOperationsScheme: Scheme<MapOperations> = {
 
 export const ArrayOperationsScheme: Scheme<ArrayOperations> = {
   users: [],
+};
+
+export const BooleanOperationsScheme: Scheme<BooleanOperations> = {
+  isFreePremium: false,
+  isPremium: false,
 };

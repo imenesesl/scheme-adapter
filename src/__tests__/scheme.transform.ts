@@ -1,5 +1,5 @@
 import { SchemeTransform } from '../';
-import { ArrayOperations, MapOperations, MathOperations, User } from './types';
+import { ArrayOperations, BooleanOperations, MapOperations, MathOperations, User } from './types';
 
 export const UserSchemaTransfrom: SchemeTransform<User> = {
   email: {
@@ -75,5 +75,18 @@ export const ArrayOperationsSchemeTranform: SchemeTransform<ArrayOperations> = {
     transforms: ['premium', 'free', 'freemium'],
     join: 'join-array',
     value: [],
+  },
+};
+
+export const BooleanOperationsSchemeTranform: SchemeTransform<BooleanOperations> = {
+  isFreePremium: {
+    transforms: ['isActive', 'isCertificated'],
+    join: 'or',
+    value: false,
+  },
+  isPremium: {
+    transforms: ['isActive', 'isPremium', 'isCertificated'],
+    join: 'and',
+    value: false,
   },
 };

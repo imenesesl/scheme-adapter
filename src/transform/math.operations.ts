@@ -11,7 +11,7 @@ export const mathOperations = ({ hasJoin, index, value, accumulator }: Params): 
   let acc = accumulator;
   if (hasJoin) {
     if (![DIVIDE, MULTYPLY, REST, SUM].includes(hasJoin))
-      throw new Error(`Invalid join to type number, use: <${SUM} | ${REST} | ${DIVIDE}>`);
+      throw new Error(`Invalid join to type number, use: <${SUM} | ${REST} | ${DIVIDE} | ${MULTYPLY}>`);
     if (hasJoin === SUM) {
       if (index === 0) acc = value;
       else acc = acc + value;

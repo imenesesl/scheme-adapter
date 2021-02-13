@@ -41,3 +41,8 @@ export interface MapOperations {
 export interface ArrayOperations {
   users: Array<User>;
 }
+
+export interface BooleanOperations {
+  isPremium: boolean;
+  isFreePremium: boolean;
+}

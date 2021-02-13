@@ -48,7 +48,7 @@
     "array-callback-return": "error",
     "default-case": "error",
     "eqeqeq": "error",
-    "max-lines": ["error", { "max": 110 }],
+    "max-lines": ["error", { "max": 120 }],
     "no-await-in-loop": "error",
     "no-console": "error",
     "no-duplicate-imports": "error",

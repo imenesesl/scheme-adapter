@@ -1,8 +1,8 @@
 import { ownerAdapter, repositoryAdapter, userAdapter } from '../adapter/adapters';
-import { ArrayOperationsScheme, MapOperationsScheme, MathOperationsScheme } from '../scheme';
-import { arrayOperationsTransform, mapOperationsTransform, mathOperationsTransform } from './transforms';
+import { ArrayOperationsScheme, BooleanOperationsScheme, MapOperationsScheme, MathOperationsScheme } from '../scheme';
+import { arrayOperationsTransform, booleanOperationsTransform, mapOperationsTransform, mathOperationsTransform } from './transforms';
 
-describe('JOIN MATH', () => {
+describe('MATH', () => {
   const data2021Model = {
     January: 31,
     February: 28,
@@ -43,6 +43,28 @@ describe('JOIN MATH', () => {
 
   test('general', () => {
     expect(JSON.stringify(Object.keys(mathOperations))).toBe(JSON.stringify(Object.keys(MathOperationsScheme)));
+  });
+});
+
+describe('LOGIC', () => {
+  const dataModel = {
+    isActive: true,
+    isPremium: false,
+    isCertificated: true,
+  };
+
+  const booleanOperations = booleanOperationsTransform(dataModel);
+
+  test('and', () => {
+    expect(booleanOperations.isPremium).toBe(dataModel.isActive && dataModel.isCertificated && dataModel.isPremium);
+  });
+
+  test('or', () => {
+    expect(booleanOperations.isFreePremium).toBe(dataModel.isActive || dataModel.isCertificated);
+  });
+
+  test('general', () => {
+    expect(JSON.stringify(Object.keys(booleanOperations))).toBe(JSON.stringify(Object.keys(BooleanOperationsScheme)));
   });
 });
 
