@@ -1,5 +1,5 @@
 import { Scheme } from '..';
-import { Owner, PubSub, Repository } from './types';
+import { Owner, PubSub, Repository, User } from './types';
 
 export const RepositoryScheme: Scheme<Repository> = {
   isActive: false,
@@ -36,4 +36,10 @@ export const OwnerScheme: Scheme<Owner> = {
     users: [],
     count: 0,
   },
+};
+
+export const UserScheme: Scheme<User> = {
+  email: '',
+  isActive: false,
+  name: '',
 };
