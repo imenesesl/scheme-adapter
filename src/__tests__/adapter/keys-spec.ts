@@ -1,5 +1,5 @@
 import { typedKeys } from '../../core/iterator';
-import { PubSub, Repository, User } from '../types';
+import { Owner, PubSub, Repository } from '../types';
 import { ownerAdapter, pubSubAdapter, repositoryAdapter } from './adapters';
 
 describe('MAIN PROPERTIES', () => {
@@ -17,7 +17,7 @@ describe('MAIN PROPERTIES', () => {
 
   test('type => array', () => {
     const owner = ownerAdapter([]);
-    const keys = typedKeys<User>(owner);
+    const keys = typedKeys<Owner>(owner);
     expect(JSON.stringify(Object.keys(owner))).toBe(JSON.stringify(keys));
   });
 
@@ -35,7 +35,7 @@ describe('MAIN PROPERTIES', () => {
 
   test('type => number', () => {
     const owner = ownerAdapter(0);
-    const keys = typedKeys<User>(owner);
+    const keys = typedKeys<Owner>(owner);
     expect(JSON.stringify(Object.keys(owner))).toBe(JSON.stringify(keys));
   });
 
