@@ -19,3 +19,10 @@ export interface Repository {
   name: string;
   isActive: boolean;
 }
+
+export interface MathOperations {
+  sum: number;
+  rest: number;
+  divided: number;
+  multiply: number;
+}
