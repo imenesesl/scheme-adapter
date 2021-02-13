@@ -1,2 +1,3 @@
-export { isValid, typedKeys } from './iterator';
+export { typedKeys } from './iterator';
 export { Scheme, SchemeTransform } from './scheme';
+export { isValid } from './validators';
