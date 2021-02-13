@@ -1,5 +1,5 @@
-import { PubSubScheme, RepositoryScheme, UserScheme } from '../scheme';
-import { pubSubAdapter, repositoryAdapter, userAdapter } from './adapters';
+import { OwnerScheme, PubSubScheme, RepositoryScheme } from '../scheme';
+import { ownerAdapter, pubSubAdapter, repositoryAdapter } from './adapters';
 
 describe('WITHOUT STRUCTURE', () => {
   test('type => null', () => {
@@ -13,8 +13,8 @@ describe('WITHOUT STRUCTURE', () => {
   });
 
   test('type => array', () => {
-    const user = userAdapter([]);
-    expect(JSON.stringify(user)).toBe(JSON.stringify(UserScheme));
+    const owner = ownerAdapter([]);
+    expect(JSON.stringify(owner)).toBe(JSON.stringify(OwnerScheme));
   });
 
   test('type => undefined', () => {
@@ -28,8 +28,8 @@ describe('WITHOUT STRUCTURE', () => {
   });
 
   test('type => number', () => {
-    const user = userAdapter(0);
-    expect(JSON.stringify(user)).toBe(JSON.stringify(UserScheme));
+    const owner = ownerAdapter(0);
+    expect(JSON.stringify(owner)).toBe(JSON.stringify(OwnerScheme));
   });
 
   test('type => string', () => {

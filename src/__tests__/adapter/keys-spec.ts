@@ -1,6 +1,6 @@
 import { typedKeys } from '../../core/iterator';
 import { PubSub, Repository, User } from '../types';
-import { pubSubAdapter, repositoryAdapter, userAdapter } from './adapters';
+import { ownerAdapter, pubSubAdapter, repositoryAdapter } from './adapters';
 
 describe('MAIN PROPERTIES', () => {
   test('type => null', () => {
@@ -16,9 +16,9 @@ describe('MAIN PROPERTIES', () => {
   });
 
   test('type => array', () => {
-    const user = userAdapter([]);
-    const keys = typedKeys<User>(user);
-    expect(JSON.stringify(Object.keys(user))).toBe(JSON.stringify(keys));
+    const owner = ownerAdapter([]);
+    const keys = typedKeys<User>(owner);
+    expect(JSON.stringify(Object.keys(owner))).toBe(JSON.stringify(keys));
   });
 
   test('type => undefined', () => {
@@ -34,9 +34,9 @@ describe('MAIN PROPERTIES', () => {
   });
 
   test('type => number', () => {
-    const user = userAdapter(0);
-    const keys = typedKeys<User>(user);
-    expect(JSON.stringify(Object.keys(user))).toBe(JSON.stringify(keys));
+    const owner = ownerAdapter(0);
+    const keys = typedKeys<User>(owner);
+    expect(JSON.stringify(Object.keys(owner))).toBe(JSON.stringify(keys));
   });
 
   test('type => string', () => {

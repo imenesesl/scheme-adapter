@@ -1,18 +1,21 @@
-export interface PubSub {
-  users: Array<User>;
-  count: number;
-}
-
 export interface User {
   name: string;
   email: string;
-  followers: PubSub;
-  following: PubSub;
   isActive: boolean;
 }
 
+export interface PubSub {
+  users: Array<Owner>;
+  count: number;
+}
+
+export interface Owner extends User {
+  followers: PubSub;
+  following: PubSub;
+}
+
 export interface Repository {
-  owner: User;
+  owner: Owner;
   name: string;
   isActive: boolean;
 }

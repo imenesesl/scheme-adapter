@@ -1,5 +1,5 @@
-import { PubSubScheme, RepositoryScheme, UserScheme } from '../scheme';
-import { pubSubAdapter, repositoryAdapter, userAdapter } from './adapters';
+import { OwnerScheme, PubSubScheme, RepositoryScheme } from '../scheme';
+import { ownerAdapter, pubSubAdapter, repositoryAdapter } from './adapters';
 
 describe('TRANSFORM STRUCTURE', () => {
   const followerModel = {
@@ -10,7 +10,7 @@ describe('TRANSFORM STRUCTURE', () => {
     },
   };
 
-  const userModel = {
+  const ownerModel = {
     isActive: true,
     email: 'luismenesesep@gmail.com',
     name: 'Luis Meneses',
@@ -21,7 +21,7 @@ describe('TRANSFORM STRUCTURE', () => {
   };
 
   const pubSubModel = {
-    users: [userModel, followerModel],
+    users: [ownerModel, followerModel],
     count: 2,
   };
 
@@ -50,12 +50,12 @@ describe('TRANSFORM STRUCTURE', () => {
     expect(JSON.stringify(Object.keys(repository))).toBe(JSON.stringify(Object.keys(RepositoryScheme)));
   });
 
-  test('user', () => {
-    const user = userAdapter(userModel);
-    expect(user.isActive).toBe(true);
-    expect(user.followers.users.length).toBe(user.followers.count);
-    expect(user.following.users.length).toBe(user.following.count);
-    expect(user.followers.users[0].isActive).toBe(false);
-    expect(JSON.stringify(Object.keys(user))).toBe(JSON.stringify(Object.keys(UserScheme)));
+  test('owner', () => {
+    const owner = ownerAdapter(ownerModel);
+    expect(owner.isActive).toBe(true);
+    expect(owner.followers.users.length).toBe(owner.followers.count);
+    expect(owner.following.users.length).toBe(owner.following.count);
+    expect(owner.followers.users[0].isActive).toBe(false);
+    expect(JSON.stringify(Object.keys(owner))).toBe(JSON.stringify(Object.keys(OwnerScheme)));
   });
 });
